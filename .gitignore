@@ -28,3 +28,9 @@
 
 # "temporary" build files
 /target
+
+.idea/
+.project
+grailsw
+grailsw.bat
+.classpath
