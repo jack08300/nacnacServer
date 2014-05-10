@@ -1,0 +1,13 @@
+git pull
+today=`date "+%Y%m%d_%ss"`
+grails clean
+echo 'Grails clean'
+grails -Dgrails.env=production war target/jserver_$today.war
+        echo ''
+        echo 'Deploying jserver_$today.war'
+        echo ''
+        ~/appservers/apache-tomcat-7.0.5/bin/shutdown.sh
+        rm -r ~/appservers/apache-tomcat-7.0.5/webapps/nacnac.war
+        rm -r ~/appservers/apache-tomcat-7.0.5/webapps/nacnac
+        cp target/jserver_$today.war ~/appservers/apache-tomcat-7.0.5/webapps/nacnac.war
+        ~/appservers/apache-tomcat-7.0.5/bin/startup.sh
